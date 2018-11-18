@@ -39,16 +39,12 @@ int main(){
 	PD_init();
 	while(1){
 		while((can_recieve().data[GAME_START]) == 0){
-			printf("\nInside game_flag loop\n");
 		}
-		printf("\nFirst Game_START complete\n");
-		
 		_delay_ms(1000);
 		/* ---------------------- RUN GAME ---------------------- */
 		
 		while (!(game_over())){
 			can_msg msg_usb_board = can_recieve();
-			printf("\n game running \n");
 			PWM_set_pulse(PWM_joystick_to_PWM(msg_usb_board.data[JOYSTICK_X]));
 			//printf("The slider position: %d\n",msg_usb_board.data[SLIDER_BUTTON_RIGHT]);
 			solenoid_hit(msg_usb_board.data[SLIDER_BUTTON_RIGHT]);
