@@ -16,13 +16,13 @@ typedef struct{
 
 typedef enum{
 	JOYSTICK_X,
-	JOYSTICK_Y,
+	DIFFICULTY,
 	JOYSTICK_BUTTON,
 	SLIDER_LEFT,
 	SLIDER_RIGHT,
 	SLIDER_BUTTON_LEFT,
 	SLIDER_BUTTON_RIGHT,
-	NA
+	GAME_START
 }USB_PACKAGE;
 
 void can_init();
@@ -33,10 +33,6 @@ can_msg can_recieve();
 
 void print_msg(can_msg msg);
 
-void can_test_loopback_2(can_msg msg, can_msg msg2);
-
-void can_test_loopback_1(can_msg msg);
-
-void can_test_normal_mode();
+can_msg CAN_package(uint8_t end_game);
 
 #endif /* CAN_H_ */

@@ -8,6 +8,11 @@
 
 #ifndef PD_H_
 #define PD_H_
+typedef enum{
+	EASY,
+	MEDIUM,
+	INSANE,
+}DIFFICULTY;
 
 
 void PD_init();

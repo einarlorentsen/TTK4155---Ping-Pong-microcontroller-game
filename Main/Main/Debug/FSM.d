@@ -1,4 +1,4 @@
-Main.d Main.o: .././Main.c \
+FSM.d FSM.o: .././FSM.c \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -18,9 +18,9 @@ Main.d Main.o: .././Main.c \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\lib\gcc\avr\4.8.1\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\lib\gcc\avr\4.8.1\include\stddef.h \
  .././UART.h .././sram.h .././joystick.h .././adc.h .././memory.h \
- .././bit_manipulation.h .././test.h .././oled.h .././menu.h \
+ .././bit_manipulation.h .././oled.h .././menu.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\stdlib.h \
- .././SPI.h .././CAN.h .././MCP2515.h .././FSM.h
+ .././SPI.h .././CAN.h .././MCP2515.h
 
 c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -70,8 +70,6 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-g
 
 .././bit_manipulation.h:
 
-.././test.h:
-
 .././oled.h:
 
 .././menu.h:
@@ -83,5 +81,3 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-g
 .././CAN.h:
 
 .././MCP2515.h:
-
-.././FSM.h:

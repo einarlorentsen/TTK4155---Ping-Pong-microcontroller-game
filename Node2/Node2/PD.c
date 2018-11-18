@@ -14,13 +14,13 @@
 #include "ADC.h"
 #include "motor.h"
 #include "PD.h"
-#define MAX_SPEED 120
+#define MAX_SPEED 150
 uint8_t reference = 127;
 int16_t position = 0;
 int16_t previous_error = 0;
 double dt = 0.016;
-double Kp = 3;
-double Kd = 0;
+double Kp = 4;
+double Kd = 0.0002;
 int16_t lower_limit;
 int16_t upper_limit;
 double range;

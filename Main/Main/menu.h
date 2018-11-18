@@ -7,6 +7,12 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+typedef enum{
+	EASY,
+	MEDIUM,
+	INSANE,
+}GAME_MODE;
+
 typedef struct menu_node menu_node;
 
 struct menu_node{
@@ -26,10 +32,12 @@ menu_node* menu_create(char* name,void *myfunction(void), uint8_t page_nr);
 void menu_init();
 void menu_display(menu_node* menu);
 void menu_move();
-//void menu_free(menu_node main_menu);
 menu_node* menu_get_current_menu();
+menu_node* get_main_menu();
 
-
-
-
+/* --- MENU NODE FUNCTIONS --- */
+void menu_play_pong();
+void menu_replay_yes();
+void menu_replay_no();
+void menu_settings();
 #endif /* MENU_H_ */

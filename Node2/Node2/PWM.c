@@ -5,7 +5,7 @@
  *  Author: johangh
  */ 
 // INVERTED = 1 when the servo is inverted
-#define INVERTED 1
+#define INVERTED 0
 #define F_CPU 16000000
 #define PERIOD 0.02
 #define PRESCALER 64

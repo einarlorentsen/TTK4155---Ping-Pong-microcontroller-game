@@ -19,8 +19,8 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\avr\lock.h \
  .././CAN.h .././MCP2515.h .././SPI.h .././UART.h .././bit_manipulation.h \
- .././PWM.h .././ADC.h .././game.h .././solenoid_driver.h .././DAC.h \
- .././motor.h .././PD.h
+ .././PWM.h .././ADC.h .././game.h .././solenoid_driver.h .././timer.h \
+ .././DAC.h .././motor.h .././PD.h
 
 c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-gnu-toolchain\avr\include\util\delay.h:
 
@@ -77,6 +77,8 @@ c:\program\ files\ (x86)\atmel\atmel\ toolchain\avr8\ gcc\native\3.4.1061\avr8-g
 .././game.h:
 
 .././solenoid_driver.h:
+
+.././timer.h:
 
 .././DAC.h:
 

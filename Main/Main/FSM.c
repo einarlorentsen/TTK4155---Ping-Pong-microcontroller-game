@@ -1,9 +1,10 @@
 /*
- * Main.cpp
+ * FSM.c
  *
- * Created: 29.08.2018 09:27:21
- *  Author: Johangh
+ * Created: 18.11.2018 18:11:34
+ *  Author: johangh
  */ 
+
 
 #define F_CPU 4915200 // clock frequency in Hz
 
@@ -18,30 +19,19 @@
 #include "adc.h"
 #include "memory.h"
 #include "bit_manipulation.h"
-#include "test.h"
 #include "oled.h"
 #include "menu.h"
 #include "SPI.h"
 #include "CAN.h"
 #include "MCP2515.h"
-#include "FSM.h"
 #include <math.h>
 
-int main(void){
-	cli();
-	uart_init();
-	memory_init();
-	SRAM_test();
-	ADC_init();
-	oled_init();
-	joystick_init();
-	oled_reset();
-	find_joystick_center();
-	can_init();
-	menu_init();
+
+void FSM(){
+	menu_move();
 	_delay_ms(100);
-	can_send(CAN_package(0,EASY));
-	while(1){
-		FSM();
+	if(menu_get_current_menu()->menu_function != NULL && (joystick_button())){
+		_delay_ms(200);
+		menu_get_current_menu()->menu_function();
 	}
 }

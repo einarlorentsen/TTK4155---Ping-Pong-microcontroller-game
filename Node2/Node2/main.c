@@ -18,6 +18,7 @@
 #include "ADC.h"
 #include "game.h"
 #include "solenoid_driver.h"
+#include "timer.h"
 #include "DAC.h"
 #include "motor.h"
 #include "PD.h"
@@ -32,21 +33,28 @@ int main(){
 	ADC_init();
 	solenoid_init();
 	DAC_init();
-	printf("test print");
 	motor_init();
+	printf("test print");
 	motor_calibration();
 	PD_init();
-	_delay_ms(1000);
-	
-	/* ---------------------- RUN GAME ---------------------- */
-	
-	while (1){
-		can_msg msg_usb_board = can_recieve();
-		PWM_set_pulse(PWM_joystick_to_PWM(msg_usb_board.data[JOYSTICK_X]));
-		//printf("The slider position: %d\n",msg_usb_board.data[SLIDER_LEFT]);
-		solenoid_hit(msg_usb_board.data[SLIDER_BUTTON_RIGHT]);
-		//printf("This should be the digital signal of IR: %d\n",ADC_read());
-		PD_set_position_reference(msg_usb_board.data[SLIDER_RIGHT]);
+	while(1){
+		while((can_recieve().data[GAME_START]) == 0){
+			printf("\nInside game_flag loop\n");
+		}
+		printf("\nFirst Game_START complete\n");
+		
+		_delay_ms(1000);
+		/* ---------------------- RUN GAME ---------------------- */
+		
+		while (!(game_over())){
+			can_msg msg_usb_board = can_recieve();
+			printf("\n game running \n");
+			PWM_set_pulse(PWM_joystick_to_PWM(msg_usb_board.data[JOYSTICK_X]));
+			//printf("The slider position: %d\n",msg_usb_board.data[SLIDER_BUTTON_RIGHT]);
+			solenoid_hit(msg_usb_board.data[SLIDER_BUTTON_RIGHT]);
+			//printf("This should be the digital signal of IR: %d\n",ADC_read());
+			PD_set_position_reference(msg_usb_board.data[SLIDER_RIGHT]);
+		}
+		can_send(CAN_package(1));
 	}
-	
 }

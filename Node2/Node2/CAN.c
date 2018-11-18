@@ -60,37 +60,10 @@ void print_msg(can_msg msg){
 	printf("}\n");
 }
 
-void can_test_loopback_2(can_msg msg, can_msg msg2){
-	printf("This is the first message to be sent:\n");
-	print_msg(msg);
-	can_send(msg);
-	print_msg(can_recieve(msg));
-	printf("\nthe first message is received.");
-	printf("\nThis is the second message to be sent:\n");
-	print_msg(msg2);
-	can_send(msg2);
-	print_msg(can_recieve(msg2));
-	printf("\nthe second message is received.");
-	
+can_msg CAN_package(uint8_t end_game){
+	can_msg msg;
+	msg.id = 2;
+	msg.length = 1;
+	msg.data[0] = end_game;
+	return msg;
 }
-void can_test_loopback_1(can_msg msg){
-	printf("This is the first message to be sent:\n");
-	print_msg(msg);
-	can_send(msg);
-	print_msg(can_recieve());
-	printf("\nthe first message is received.");
-}
-void can_test_normal_mode(){
-	printf("we expect the following message from node 1:\n");
-	can_msg msg2;
-	msg2.id = 0x01;
-	msg2.length = 8;
-	for (int i = 0; i < msg2.length; i++){
-		msg2.data[i] = 0x04*i;
-	}
-	print_msg(msg2);
-	printf("The message we recieved:\n");
-	print_msg(can_recieve());
-}
-
-//can_msg CAN_USB_package()

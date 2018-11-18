@@ -39,6 +39,7 @@ SUBDIRS :=
 C_SRCS +=  \
 ../adc.c \
 ../CAN.c \
+../FSM.c \
 ../joystick.c \
 ../Main.c \
 ../MCP2515.c \
@@ -61,6 +62,7 @@ ASM_SRCS +=
 OBJS +=  \
 adc.o \
 CAN.o \
+FSM.o \
 joystick.o \
 Main.o \
 MCP2515.o \
@@ -76,6 +78,7 @@ UART.o
 OBJS_AS_ARGS +=  \
 adc.o \
 CAN.o \
+FSM.o \
 joystick.o \
 Main.o \
 MCP2515.o \
@@ -91,6 +94,7 @@ UART.o
 C_DEPS +=  \
 adc.d \
 CAN.d \
+FSM.d \
 joystick.d \
 Main.d \
 MCP2515.d \
@@ -106,6 +110,7 @@ UART.d
 C_DEPS_AS_ARGS +=  \
 adc.d \
 CAN.d \
+FSM.d \
 joystick.d \
 Main.d \
 MCP2515.d \
@@ -132,6 +137,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 

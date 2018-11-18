@@ -6,6 +6,8 @@ adc.c
 
 CAN.c
 
+FSM.c
+
 joystick.c
 
 Main.c

@@ -86,7 +86,7 @@ void motor_calibration(){
 	int16_t last_position = 1000;
 	int16_t position = motor_read_encoder();
 	motor_direction(LEFT);
-	motor_speed(70);
+	motor_speed(95);
 	_delay_ms(20);
 	last_position = position;
 	position = motor_read_encoder();
@@ -99,7 +99,7 @@ void motor_calibration(){
 	reset_encoder();
 	MIN_ENCODER = motor_read_encoder();
 	motor_direction(RIGHT);
-	motor_speed(70);
+	motor_speed(95);
 	_delay_ms(20);
 	last_position = position;
 	position = motor_read_encoder();

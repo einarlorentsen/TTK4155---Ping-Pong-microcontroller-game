@@ -93,18 +93,19 @@ void can_test_loopback_1(can_msg msg){
 
 }
 
-can_msg CAN_package(void){
+can_msg CAN_package(uint8_t start_game, uint8_t difficulty){
 	can_msg msg;
 	msg.id = 1;
-	msg.length = 7;
+	msg.length = 8;
 	position XY = find_position();
 	slider_position slider = find_slider_position();
 	msg.data[JOYSTICK_X] = ADC_read(CH_X);
-	msg.data[JOYSTICK_Y] = ADC_read(CH_Y);
+	msg.data[DIFFICULTY] = difficulty;
 	msg.data[JOYSTICK_BUTTON] = joystick_button();
 	msg.data[SLIDER_LEFT] = slider.left;
 	msg.data[SLIDER_RIGHT] = slider.right;
 	msg.data[SLIDER_BUTTON_LEFT] = left_slider_button();
 	msg.data[SLIDER_BUTTON_RIGHT] = right_slider_button();
+	msg.data[GAME_START] = start_game;
 	return msg;
 }
