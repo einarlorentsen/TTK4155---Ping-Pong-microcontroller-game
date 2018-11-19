@@ -30,8 +30,9 @@
 void FSM(){
 	menu_move();
 	_delay_ms(100);
-	if(menu_get_current_menu()->menu_function != NULL && (joystick_button())){
+	if( (menu_get_current_menu()->menu_function != NULL) && joystick_button() ){
 		_delay_ms(200);
 		menu_get_current_menu()->menu_function();
 	}
+
 }

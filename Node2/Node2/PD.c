@@ -88,3 +88,28 @@ ISR(TIMER2_OVF_vect){
 	set_bit(TIFR2,TOV2);
 }
 
+void PD_set_game_mode(uint8_t difficulty){
+	switch(difficulty) {
+		
+		case EASY:
+			Kp = 4;
+			Kd = 0.0002;
+			break;
+		
+		case MEDIUM:
+			Kp = 6;
+			Kd = 0.02;
+			break; 
+			
+		case INSANE:
+			Kp = 8;
+			Kd = 0.2;
+			break;
+			
+		default: 
+			Kp = 4;
+			Kd = 0.0002;
+			break;
+	}
+	
+}

@@ -40,7 +40,7 @@ int main(void){
 	can_init();
 	menu_init();
 	_delay_ms(100);
-	can_send(CAN_package(0,EASY));
+	can_send(CAN_package(0,get_difficulty()));
 	while(1){
 		FSM();
 	}

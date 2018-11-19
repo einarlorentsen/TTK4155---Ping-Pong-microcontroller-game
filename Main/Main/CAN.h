@@ -33,5 +33,5 @@ void print_msg(can_msg msg);
 
 // CAN_package: values from the USB board
 
-can_msg CAN_package(uint8_t start_game,uint8_t difficulty);
+can_msg CAN_package(uint8_t start_game, uint8_t difficulty);
 

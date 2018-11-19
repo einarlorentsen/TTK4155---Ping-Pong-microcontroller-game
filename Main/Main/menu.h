@@ -10,7 +10,7 @@
 typedef enum{
 	EASY,
 	MEDIUM,
-	INSANE,
+	INSANE
 }GAME_MODE;
 
 typedef struct menu_node menu_node;
@@ -39,5 +39,13 @@ menu_node* get_main_menu();
 void menu_play_pong();
 void menu_replay_yes();
 void menu_replay_no();
-void menu_settings();
+void menu_difficulty();
+
+/* --- SETTING DIFFICULTY --- */
+void difficulty_easy();
+void difficulty_medium();
+void difficulty_insane();
+
+/* --- GET DIFFICULTY --- */
+uint8_t get_difficulty();
 #endif /* MENU_H_ */

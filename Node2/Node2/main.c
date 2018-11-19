@@ -41,9 +41,10 @@ int main(){
 		while((can_recieve().data[GAME_START]) == 0){
 		}
 		_delay_ms(1000);
+		//printf("Difficulty: %d", can_recieve().data[DIFFICULTY]);
 		/* ---------------------- RUN GAME ---------------------- */
-		
 		while (!(game_over())){
+			PD_set_game_mode(can_recieve().data[DIFFICULTY]);
 			can_msg msg_usb_board = can_recieve();
 			PWM_set_pulse(PWM_joystick_to_PWM(msg_usb_board.data[JOYSTICK_X]));
 			//printf("The slider position: %d\n",msg_usb_board.data[SLIDER_BUTTON_RIGHT]);

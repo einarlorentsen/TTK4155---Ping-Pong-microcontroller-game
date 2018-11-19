@@ -12,13 +12,14 @@ typedef enum{
 	EASY,
 	MEDIUM,
 	INSANE,
-}DIFFICULTY;
+} GAME_MODE;
 
 
 void PD_init();
 
 int16_t PD_set_position_reference(int16_t ref);
 
+void PD_set_game_mode(uint8_t difficulty);
 
 
 

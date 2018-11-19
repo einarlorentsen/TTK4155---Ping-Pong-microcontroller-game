@@ -86,10 +86,30 @@ void menu_init(){
 	
 	/*  Difficulty --- */
 	
-	play_pong->sibling_right = menu_create("Difficulty", &oled_reset,2);
+	play_pong->sibling_right = menu_create("Difficulty", &menu_difficulty,2);
 	menu_node* difficulty = play_pong->sibling_right;
 	difficulty->sibling_left = play_pong;
 	difficulty->parent_menu = main_menu;
+	
+	/* Difficulty submeny -> Easy --- */
+	
+	difficulty->child_menu = menu_create("Easy", &difficulty_easy,1);
+	menu_node* easy = difficulty->child_menu;
+	easy->parent_menu = difficulty;
+	
+	/* Difficulty submeny -> Medium --- */
+	
+	easy->sibling_right = menu_create("Medium", &difficulty_medium,2);
+	menu_node* medium = easy->sibling_right;
+	medium->sibling_left = easy;
+	medium->parent_menu = difficulty;
+	
+	/* Difficulty submeny -> Insane --- */
+	
+	medium->sibling_right = menu_create("Insane", &difficulty_insane,3);
+	menu_node* insane = medium->sibling_right;
+	insane->sibling_left = medium;
+	insane->parent_menu = difficulty;
 	
 	/* --- set global current menu --- */
 	
@@ -131,7 +151,6 @@ void menu_display(menu_node* menu){
 
 
 void menu_move(){
-	printf("current direction: %d \n", find_direction());
 	if (find_direction() == UP){
 		if (current_menu->sibling_left == NULL || current_menu->page_id == 1){
 			return;
@@ -197,13 +216,13 @@ void menu_play_pong(){
 	oled_printf("   have fun!");
 	while(1){
 		_delay_ms(100);
-		can_send(CAN_package(1,EASY));
+		can_send(CAN_package(1,get_difficulty()));
 		if(can_recieve().data[0] == 1){
 			oled_reset();
 			oled_goto_column(0);
 			oled_goto_page(3);
 			oled_printf("-- Game over --");
-			can_send(CAN_package(0,EASY));
+			can_send(CAN_package(0,get_difficulty()));
 			_delay_ms(4000);
 			current_menu = current_menu->child_menu;
 			menu_display(current_menu);
@@ -220,19 +239,28 @@ void menu_replay_no(){
 	current_menu = main_menu->child_menu;
 	menu_display(main_menu);
 }
-void menu_settings(){
+
+void menu_difficulty(){
 	oled_reset();
-	menu_display(main_menu->child_menu->sibling_right); 
+	menu_display(main_menu->child_menu->sibling_right);
 }
 
-/*
-void menu_difficulty_print(){
-	switch (DIFFICULTY)
-	{
-		case EASY:
-		
-		
-	}
-	
+
+void difficulty_easy(){
+	difficulty = EASY;
+	menu_display(main_menu);
 }
-*/
+
+void difficulty_medium(){
+	difficulty = MEDIUM;
+	menu_display(main_menu);
+}
+
+void difficulty_insane(){
+	difficulty = INSANE;
+	menu_display(main_menu);
+}
+
+uint8_t get_difficulty(){
+	return difficulty;
+}

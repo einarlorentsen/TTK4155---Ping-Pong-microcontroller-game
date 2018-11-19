@@ -12,6 +12,7 @@
 #include "joystick.h"
 #include "slider.h"
 
+
 // delay functionality
 #define F_CPU 4915200
 #include <util/delay.h>
@@ -48,7 +49,6 @@ can_msg can_recieve(){
 		msg.data[i] = 0;
 	}
 	if(!(mcp2515_read(MCP_CANINTF) & MCP_RX0IF)){
-		printf("The flag is not set!\n!");
 		return msg;
 	}
 	msg.id = (mcp2515_read(MCP_RXB0_SIDL) >> 5) | (mcp2515_read(MCP_RXB0_SIDH) << 3);
